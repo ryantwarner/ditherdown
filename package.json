@@ -1,0 +1,18 @@
+{
+    "name": "ryantwarner.ditherdown",
+    "version": "1.0.0",
+    "displayName": "DitherDown",
+    "description": "Custom post-processing effects for HDRP that dithers and downsamples the entire screen. Based on Kino and KinoEight.",
+    "unity": "2019.4",
+    "unityRelease": "19f1",
+    "dependencies": { "com.unity.render-pipelines.high-definition": "7.4.1" },
+    "keywords": [
+      "unity","dither","downsample","mosaic","post processing","pixelate"
+    ],
+    "author": {
+      "name": "Ryan Warner",
+      "email": "rtwarner@gmail.com",
+      "url": "https://github.com/ryantwarner/"
+    }
+  }
+  
