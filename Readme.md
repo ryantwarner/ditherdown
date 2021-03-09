@@ -18,21 +18,11 @@ Tested with
 - Unity 2020.2.6f1
 - HDRP 10.3.1
 
-### Dither
+### Examples
 
-![gif](https://i.imgur.com/UYWkxsf.gif)
+![gif](https://i.imgur.com/4x0ppfn.png)
 
-### Dither Type
-
-Options include: Bayer2x2, 3x3, 4x4, 8x8
-
-![gif](https://imgur.com/9z8duuA.gif)
-
-### Downsample
-
-Note: Non-integer values result in rectangular pixels.
-
-![gif](https://imgur.com/ARgDtMb.gif)
+![gif](https://i.imgur.com/VG6gloj.png)
 
 ## How to use
 
@@ -40,7 +30,7 @@ Add the package to your project using the package manager's add package from git
 
 Click Edit -> Project Settings -> HDRP Default Settings and add DitherDown to the After Post Process section of Custom Post Process Orders.
 
-In a post processing volume add the Post Processing -> RTWarner -> DitherDown override and configure to suit your needs.
+In a post processing volume add the Post Processing -> RTWarner -> DitherDown override and configure to suit your needs. Note: Setting the downsample value to non integer values will result in rectangular pixels. I considered removing this, but you might have a use case, so I didn't.
 
 ## License
 
