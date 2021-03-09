@@ -1,5 +1,5 @@
 {
-    "name": "ryantwarner.ditherdown",
+    "name": "ryantwarner.postprocessing.ditherdown",
     "version": "1.0.0",
     "displayName": "DitherDown",
     "description": "Custom post-processing effects for HDRP that dithers and downsamples the entire screen. Based on Kino and KinoEight.",
