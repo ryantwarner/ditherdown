@@ -13,7 +13,7 @@ public sealed class DitherDown : CustomPostProcessVolumeComponent, IPostProcessC
 
     #region Exposed parameters
 
-    public ClampedIntParameter colorLevels = new ClampedIntParameter(16, 4, 64);
+    public ClampedIntParameter colorLevels = new ClampedIntParameter(16, 1, 24);
     public DitherTypeParameter ditherType = new DitherTypeParameter { value = DitherType.Bayer2x2 };
     public ClampedFloatParameter dithering = new ClampedFloatParameter(0f, 0, 0.5f);
     public ClampedFloatParameter downsampling = new ClampedFloatParameter(1.0f, 1.0f, 32.0f);
