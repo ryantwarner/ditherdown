@@ -32,8 +32,17 @@ Shader "Hidden/Shader/DitherDown"
     TEXTURE2D(_DitherTexture);
     float _Dithering;
     float _Downsampling;
+    float _Levels;
 
     TEXTURE2D_X(_InputTexture);
+
+	half quantize(half c)
+	{
+        int levels = _Levels;
+		int val = c*255.0;
+		val = (((val * levels + 127) / 255) * 255 + levels / 2) / levels;
+		return val / 255.0;
+	} 
 
     float4 Fragment(Varyings input) : SV_Target
     {
@@ -42,14 +51,16 @@ Shader "Hidden/Shader/DitherDown"
         // Input sample
         const uint2 pss = (uint2)(input.texcoord * _ScreenSize.xy) / _Downsampling;
         float4 col = LOAD_TEXTURE2D_X(_InputTexture, pss * _Downsampling);
-
+        
         // Linear -> sRGB
         col.rgb = LinearToSRGB(col.rgb);
-
         uint tw, th;
         _DitherTexture.GetDimensions(tw, th);
         float dither = LOAD_TEXTURE2D(_DitherTexture, pss % uint2(tw, th)).x;
         col.rgb += dither * _Dithering;
+        col.r = quantize(col.r);
+        col.g = quantize(col.g);
+        col.b = quantize(col.b);
 
         // sRGB -> Linear
         col.rgb = SRGBToLinear(col.rgb);

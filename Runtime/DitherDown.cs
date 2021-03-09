@@ -13,6 +13,7 @@ public sealed class DitherDown : CustomPostProcessVolumeComponent, IPostProcessC
 
     #region Exposed parameters
 
+    public ClampedIntParameter colorLevels = new ClampedIntParameter(16, 4, 64);
     public DitherTypeParameter ditherType = new DitherTypeParameter { value = DitherType.Bayer2x2 };
     public ClampedFloatParameter dithering = new ClampedFloatParameter(0f, 0, 0.5f);
     public ClampedFloatParameter downsampling = new ClampedFloatParameter(1.0f, 1.0f, 32.0f);
@@ -27,6 +28,7 @@ public sealed class DitherDown : CustomPostProcessVolumeComponent, IPostProcessC
         internal static readonly int Downsampling = Shader.PropertyToID("_Downsampling");
         internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         internal static readonly int DitherTexture = Shader.PropertyToID("_DitherTexture");
+        internal static readonly int Levels = Shader.PropertyToID("_Levels");
     }
 
     Material _material;
@@ -59,6 +61,7 @@ public sealed class DitherDown : CustomPostProcessVolumeComponent, IPostProcessC
 
         if (_material == null) return;
         _material.SetFloat(IDs.Dithering, dithering.value);
+        _material.SetFloat(IDs.Levels, colorLevels.value);
         _material.SetFloat(IDs.Downsampling, downsampling.value);
 
         _material.SetTexture(IDs.InputTexture, srcRT);
